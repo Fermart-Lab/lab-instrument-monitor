@@ -1,7 +1,7 @@
 fastapi==0.116.1
 uvicorn[standard]==0.35.0
 pyserial==3.5
-pyvisa==1.14.1
+pyvisa==1.16.2
 pyvisa-py==0.7.2
 pyusb==1.2.1
 python-dotenv==1.1.1
