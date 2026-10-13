@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Surface Conductivity Monitor
+Comment=Monitor multimeters and power source in a desktop window
+Exec=/absolute/path/to/SurfaceConductivity/launch_surface_conductivity_monitor.sh
+Path=/absolute/path/to/SurfaceConductivity
+Terminal=false
+Categories=Science;Utility;
+StartupNotify=true
+Icon=applications-engineering

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fermart Lab Data Logger</title>
+    <link rel="stylesheet" href="/static/styles.css?v=20260316-15" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <h1>Fermart Lab Data Logger</h1>
+        <p id="meta">Connecting...</p>
+      </header>
+
+      <section class="recording-card">
+        <div class="recording-head">
+          <div>
+            <h2>Recording</h2>
+            <p class="recording-subtitle">Save the live measurements to CSV or Excel.</p>
+          </div>
+          <div class="recording-status-wrap">
+            <span id="recording-timer" class="recording-timer">00:00</span>
+            <button id="recording-toggle" type="button" class="btn record-btn" disabled>Start Recording</button>
+          </div>
+        </div>
+        <div class="recording-controls">
+          <label class="control-form recording-path-wrap">
+            <span>Recording file</span>
+            <div class="recording-path-row">
+              <input id="recording-path" type="text" placeholder="Enter a path like /tmp/test.csv or /tmp/test.xlsx" />
+              <button id="recording-choose-file" type="button" class="btn">Choose File</button>
+            </div>
+          </label>
+        </div>
+        <p id="recording-file-dialog-note" class="recording-note"></p>
+        <p id="recording-warning" class="warning"></p>
+        <p id="recording-error" class="error"></p>
+      </section>
+
+      <section id="power-source" class="power-card">
+        <div class="power-head">
+          <h2 id="power-name">Power Source</h2>
+          <button id="power-toggle" type="button" class="btn toggle" disabled>Output OFF</button>
+        </div>
+        <p id="power-error" class="error"></p>
+        <div class="power-readings">
+          <div class="reading-box">
+            <span class="reading-label">Measured Voltage</span>
+            <span id="power-measured-voltage" class="reading-value">--</span>
+          </div>
+          <div class="reading-box">
+            <span class="reading-label">Measured Current</span>
+            <span id="power-measured-current" class="reading-value">--</span>
+          </div>
+          <div class="reading-box">
+            <span class="reading-label">Set Voltage</span>
+            <span id="power-set-voltage" class="reading-value">--</span>
+          </div>
+          <div class="reading-box">
+            <span class="reading-label">Set Current</span>
+            <span id="power-set-current" class="reading-value">--</span>
+          </div>
+        </div>
+        <div class="power-controls">
+          <form id="set-voltage-form" class="control-form">
+            <label for="set-voltage-input">Set Voltage (V)</label>
+            <input id="set-voltage-input" type="number" min="0" max="30" step="0.001" />
+            <button type="submit" class="btn">Apply</button>
+          </form>
+          <form id="set-current-form" class="control-form">
+            <label for="set-current-input">Set Current (A)</label>
+            <input id="set-current-input" type="number" min="0" max="5" step="0.001" />
+            <button type="submit" class="btn">Apply</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="meters" class="grid"></section>
+    </main>
+
+    <template id="meter-card-template">
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2 class="meter-name"></h2>
+            <label class="meter-mode-wrap">
+              <span class="reading-label meter-mode-label">Mode</span>
+              <select class="meter-mode-select">
+                <option value="voltage">Voltage</option>
+                <option value="current">Current</option>
+                <option value="resistance">Resistance</option>
+                <option value="temperature">Temperature</option>
+                <option value="frequency">Frequency</option>
+                <option value="capacitance">Capacitance</option>
+              </select>
+            </label>
+          </div>
+          <div class="reading-wrap">
+            <span class="reading-label meter-reading-label">Current</span>
+            <span class="reading-value">--</span>
+          </div>
+        </div>
+        <p class="error"></p>
+        <canvas class="chart" width="900" height="240"></canvas>
+      </article>
+    </template>
+
+    <script src="/static/app.js?v=20260316-15"></script>
+  </body>
+</html>
